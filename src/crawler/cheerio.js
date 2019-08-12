@@ -23,7 +23,7 @@ async function getPage() {
         } 
 
         if( $(elem).text().includes('Assunto')) {
-            console.log($(elem).next().nextAll() )                          
+            data.push({assunto: $(elem).siblings('span')})                          
         } 
     })
 

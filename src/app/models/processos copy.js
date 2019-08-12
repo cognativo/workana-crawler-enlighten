@@ -30,6 +30,6 @@ const processoSchema = new mongoose.Schema({
     movimentacoes: [movimentacoesSchema]
 });
  
-var ProcessoModel = mongoose.model("processos", processoSchema);
+var ProcessoModel = mongoose.model("pesquisas", processoSchema);
  
 module.exports = ProcessoModel;

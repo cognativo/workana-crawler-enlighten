@@ -1,6 +1,6 @@
 'use strict'
 
-const Processo = require('../models/processos')
+const Pesquisa = require('../models/pesquisas')
 const mongoose = require('mongoose')
 
 module.exports = {
@@ -8,14 +8,12 @@ module.exports = {
     create: async (info) => {
 
         info._id = mongoose.Types.ObjectId()
-        var processo = new Processo(info)
-        console.log('Criar novo processo!!!', processo);
+        var pesquisa = new Pesquisa(info)
+        console.log('Criar novo processo!!!', pesquisa);
         
         try{
             var response;
-            response = await processo.save()
-            console.log(response)
-            console.log({type: 'SUCCESS', message: response})
+            response = await pesquisa.save()
         }catch( error ) {
             console.log(error);
             

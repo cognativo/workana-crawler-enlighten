@@ -31,6 +31,12 @@ const pesquisaSchema = new mongoose.Schema({
     partes: [partesSchema],
     movimentacoes: [movimentacoesSchema]
 });
+
+const resultPesquisaSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    codigoPesquisa: String,
+    urlPesquisa: String
+})
  
 var PesquisaModel = mongoose.model("pesquisas", pesquisaSchema);
  

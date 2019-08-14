@@ -39,23 +39,34 @@ module.exports = {
     getAll: async(req, res, next) => {
         
         try{
-            var response = await Lot.find({}).exec()
-            res.status(200).json({type: 'SUCCESS', message: response})
+            var response = await Pesquisa.find({}).exec()
+            res.status(200).json({type: 'SUCCESS', data: response})
 
         }catch ( err ) {
-            res.status(200).json({type: 'ERROR', message: response})
+            res.status(200).json({type: 'ERROR', data: response})
+        }         
+    },
+
+    getResultados: async(req, res, next) => {
+        
+        try{
+            var response = await Resultado.find({}).exec()
+            res.status(200).json({type: 'SUCCESS', data: response})
+
+        }catch ( err ) {
+            res.status(200).json({type: 'ERROR', data: 'err'})
         }         
     },
 
     getById: async (req, res, next) => {
-        const rId = req.params.id;
+        const codPesquisa = req.params.codPesquisa;
         
         try{
-            var response = await Lot.findById(rId).exec()
-            res.status(200).json({type: 'SUCCESS', message: response})
+            var response = await Pesquisa.find({codigoPesquisa: codPesquisa}).exec()
+            res.status(200).json({type: 'SUCCESS', data: response})
 
         }catch ( err ) {
-            res.status(200).json({type: 'ERROR', message: response})
+            res.status(200).json({type: 'ERROR', data: response})
         }   
     },
 
@@ -64,7 +75,7 @@ module.exports = {
         var reqUpdate = req.body
 
         try {
-            var response = await Lot.findByIdAndUpdate(rId, reqUpdate)
+            var response = await Pesquisa.findByIdAndUpdate(rId, reqUpdate)
             res.status(200).json({type: 'SUCCESS', message: response, updated: true})
         } catch ( err ) {
             res.status(200).json({type: 'ERROR', message: response, updated: false})

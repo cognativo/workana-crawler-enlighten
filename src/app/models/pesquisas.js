@@ -3,6 +3,17 @@
 const db = require('../database/db')
 const mongoose = require('mongoose')
 
+const principalSchema = new mongoose.Schema({
+    processo: String,
+    classe : String,
+    assunto: String,
+    distribuicao: String,
+    foro: String,
+    controle: String,
+    juiz: String,
+    valorAcao: String
+});
+
 const partesSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     tipo: String,
@@ -20,14 +31,7 @@ const pesquisaSchema = new mongoose.Schema({
     urlPesquisa: String,
     codigoPesquisa: String,
     title: String,
-    processo: String,
-    ideclassentification : String,
-    assunto: String,
-    distribuicao: String,
-    foro: String,
-    controle: String,
-    juiz: String,
-    valorAcao: String,
+    capaProcesso: [principalSchema],
     partes: [partesSchema],
     movimentacoes: [movimentacoesSchema]
 });

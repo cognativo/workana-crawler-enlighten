@@ -40,15 +40,18 @@ async function buscarProcessos(links) {
             var _controle = null
             var _juiz = null
             var _valorAcao = null
-
+            
+            var capaProcesso = {}
+            
+            var resultCapaProcesso = []
             var resultParteProcess = []
             var resultPeticoesDiversas = []
             var resultMovimentacoes = []
 
             //Lista de Coluna 1
-            const coluna1 = document.querySelectorAll('.labelClass')
-
-            coluna1.forEach(item => {
+            const itensProcesso = document.querySelectorAll('.labelClass')
+            
+            itensProcesso.forEach(item => {
 
                 if (item.textContent.includes('Classe')) {
                     _classe = item.nextSibling.parentNode.nextElementSibling.textContent.trim()
@@ -77,7 +80,9 @@ async function buscarProcessos(links) {
                 if (item.textContent.includes('Valor')) {
                     _valorAcao = item.nextSibling.parentNode.nextElementSibling.textContent.trim()
                 }
+                
             });
+
 
             //Parte do Processo
             const arrayPartesProcesso = document.querySelectorAll('span.mensagemExibindo')
@@ -122,14 +127,17 @@ async function buscarProcessos(links) {
 
             return {
                 title: document.title,
-                processo: _process,
-                classe: _classe,
-                assunto: _assunto,
-                distribuicao: _distribuicao,
-                foro: _foro,
-                controle: _controle,
-                juiz: _juiz,
-                valorAcao: _valorAcao,
+                capaProcesso: 
+                [{
+                    processo: _process,
+                    classe: _classe,
+                    assunto: _assunto,
+                    distribuicao: _distribuicao,
+                    foro: _foro,
+                    controle: _controle,
+                    juiz: _juiz,
+                    valorAcao: _valorAcao
+                }],
                 partes: resultParteProcess,
                 peticoes: resultPeticoesDiversas,
                 movimentacoes: resultMovimentacoes

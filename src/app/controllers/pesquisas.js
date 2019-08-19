@@ -9,7 +9,6 @@ module.exports = {
 
         info._id = mongoose.Types.ObjectId()
         var pesquisa = new Pesquisa(info)
-        console.log('Criar novo processo!!!', pesquisa);
         
         try{
             var response;

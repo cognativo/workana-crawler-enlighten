@@ -155,16 +155,18 @@ async function buscarProcessos(links) {
     })
 
     const response = {status: "SUCCESS", message: "Carga realizada com sucesso!!!" }
-    return response
-    
+    return response    
 }
 
 //Buscar Páginas
 async function getPages(url) {
 
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    })
     const page = await browser.newPage()
 
+    console.log(`URL: ${url}`);
     console.log('Páginas: getPages');
     console.log(`URL: ${url}`);
 

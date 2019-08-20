@@ -196,31 +196,4 @@ async function getPages(url) {
     return info
 }
 
-// const getForos = async () => {
-
-//     const browser = await puppeteer.launch()
-//     const page = await  browser.newPage()
-//     const url = 'https://esaj.tjsp.jus.br/cpopg/open.do'
-
-//     await page.goto(url)
-
-//     const info = await page.evaluate(() => {
-
-//         //Buscar foros
-//         const foros = document.querySelectorAll('#id_foro option')
-//         let response = []
-
-//         foros.forEach(foro => {
-//             response.push({code: foro.getAttribute('value'),  foro: foro.textContent.trim()})
-//         });
-
-//         return response
-
-//     })
-
-//     await page.close()
-//     return info
-
-// }
-
 

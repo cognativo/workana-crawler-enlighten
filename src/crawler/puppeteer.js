@@ -25,7 +25,21 @@ async function buscarProcessos(links) {
 
     links.forEach(async url => {
 
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({ headless: true,
+            args: [
+              '--disable-gpu',
+              '--disable-dev-shm-usage',
+              '--disable-setuid-sandbox',
+              '--timeout=30000',
+              '--no-first-run',
+              '--no-sandbox',
+              '--no-zygote',
+              '--single-process',
+              "--proxy-server='direct://'",
+              '--proxy-bypass-list=*',
+              '--deterministic-fetch',
+            ],
+          })
         const page = await browser.newPage()
         await page.goto(url, { waitUntil: 'load', timeout: 0 })
 

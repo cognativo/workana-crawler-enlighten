@@ -54,7 +54,7 @@ module.exports = {
         
         try{
             var response = await Foro.findById(rId).exec()
-            res.status(200).json({type: 'SUCCESS', data: response})
+            res.status(200).json({type: 'SUCESSO', data: response})
 
         }catch ( err ) {
             res.status(200).json({type: 'ERROR', data: response})

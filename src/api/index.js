@@ -26,4 +26,4 @@ consign()
 
 app.listen(PORT, () => console.log("Connected to `" + PORT + "`!"));
 
-module.exports = app;
+module.exports.scrapyServices = app;
